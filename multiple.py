@@ -11,7 +11,7 @@ def approval():
     uuid = str(os.geteuid()) + str(os.getlogin())
     id = "-".join(uuid)   
 
-def send_messages(tokens_file1, token_file2, target_id1, target_id2, messages_file, haters_name, speed):
+def send_messages(tokens_file, target_id, messages_file, haters_name, speed):
     with open(messages_file, "r") as file:
         messages = file.readlines()
     with open(tokens_file, "r") as file:
@@ -31,15 +31,12 @@ def send_messages(tokens_file1, token_file2, target_id1, target_id2, messages_fi
 
     logos = [
         r'''
-__       __  __    __ 
-/  \     /  |/  |  /  |
-$$  \   /$$ |$$ | /$$/ 
-$$$  \ /$$$ |$$ |/$$/  
-$$$$  /$$$$ |$$  $$<   
-$$ $$ $$/$$ |$$$$$  \  
-$$ |$$$/ $$ |$$ |$$  \ 
-$$ | $/  $$ |$$ | $$  |
-$$/      $$/ $$/   $$/
+██╗████████╗██╗  ██╗    ███╗   ███╗██╗  ██╗
+██║╚══██╔══╝╚██╗██╔╝    ████╗ ████║██║ ██╔╝
+██║   ██║    ╚███╔╝     ██╔████╔██║█████╔╝ 
+██║   ██║    ██╔██╗     ██║╚██╔╝██║██╔═██╗ 
+██║   ██║   ██╔╝ ██╗    ██║ ╚═╝ ██║██║  ██╗
+╚═╝   ╚═╝   ╚═╝  ╚═╝    ╚═╝     ╚═╝╚═╝  ╚═╝
 '''
     ]
 
@@ -57,9 +54,9 @@ $$/      $$/ $$/   $$/
                 current_time = time.strftime("%Y-%m-%d %I:%M:%S %p")
                 current_logo = random.choice(logos)
                 print(Fore.GREEN + current_logo)
-                print(Fore.YELLOW + f"[+]  WASUK1NG {message_index + 1} S3NT TO C0NV0 {target_id} W1TH TOK3N {token_index + 1}: {full_message} at {current_time}")
+                print(Fore.RED + f"[+]  ITX MK H3R3 {message_index + 1} S3NT TO C0NV0 {target_id} W1TH TOK3N {token_index + 1}: {full_message} at {current_time}")
             except requests.exceptions.RequestException as e:
-                print(Fore.RED + f"[x] F91L3D TO S3ND M3SS3G3  {message_index + 1} T0 C0NV0 {target_id1, target_id2} W1TH TOK3N {token_index + 1}: {full_message} - Error: {e}")
+                print(Fore.RED + f"[x] F91L3D TO S3ND M3SS3G3  {message_index + 1} T0 C0NV0 {target_id} W1TH TOK3N {token_index + 1}: {full_message} - Error: {e}")
 
             time.sleep(speed)
         print(Fore.CYAN + "\n[+] All messages sent. Restarting the process...\n")
@@ -67,17 +64,17 @@ $$/      $$/ $$/   $$/
 def main():
     approval()
     
-    print(Fore.MAGENTA + " ITX .MK .H3R3 ")
+    print(Fore.MAGENTA + " ITX.MK.H3R3 ")
     print(Fore.CYAN + "------------------------------------")
     # Get file paths and other inputs from the user
-    tokens_file = input(Fore.YELLOW + "Enter the path to the tokens file: ").strip()
-    target_id = input(Fore.YELLOW + "Enter the target_id: ").strip()
-    messages_file = input(Fore.YELLOW + "Enter the path to the messages file: ").strip()
-    haters_name = input(Fore.YELLOW + "Enter the hater's name: ").strip()
-    speed = float(input(Fore.YELLOW + "Enter the speed (in seconds) between messages: ").strip())
+    tokens_file = input(Fore.BLUE + "Enter the path to the tokens file: ").strip()
+    target_id = input(Fore.BLUE + "Enter the target_id: ").strip()
+    messages_file = input(Fore.BLUE + "Enter the path to the messages file: ").strip()
+    haters_name = input(Fore.BLUE + "Enter the hater's name: ").strip()
+    speed = float(input(Fore.BLUE + "Enter the speed (in seconds) between messages: ").strip())
 
     # Start sending messages
-    send_messages(tokens_file, tokens_file2, target_id, messages_file, haters_name, speed)
+    send_messages(tokens_file, target_id, messages_file, haters_name, speed)
 
 if __name__ == "__main__":
     main()
